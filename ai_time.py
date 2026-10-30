@@ -1,12 +1,15 @@
 import datetime
 
 while (True):
-  city = input("Enter city: ")
+  try:
+    city = input("Enter city: ")
+  except EOFError:
+    break
 
   if city == "exit":
     break
 
-  current_time = datetime.datetime.now()
+  current_time = datetime.datetime.now(datetime.timezone.utc)
   hour = current_time.hour
   minute = current_time.minute
   second = current_time.second
@@ -41,5 +44,9 @@ while (True):
   else:
     print(city, "is not added")
     city = "GMT"
+
+  hour = hour + minute // 60
+  minute = minute % 60
+  hour = hour % 24
 
   print(city, str(hour) + ":" + str(minute) + ":" + str(second))
