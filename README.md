@@ -1,6 +1,6 @@
-![AI Time Prediction GMT banner](banner.png)
+![GMT World Time Calculator banner](banner.png)
 
-# AI-Time-Prediction-GMT
+# GMT-World-Time-Calculator
 
 Rule-based AI Time Prediction: a small interactive Python program that
 prints the current time in a city you name, computed from UTC with a
