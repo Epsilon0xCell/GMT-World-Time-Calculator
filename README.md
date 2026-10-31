@@ -30,7 +30,8 @@ also ends the program cleanly.
 | Shanghai | +8 hours |
 | Tokyo | +9 hours |
 
-City names are case-sensitive and must match the table exactly. Any
+City names are matched without regard to case or surrounding spaces,
+so `tokyo` and ` Tokyo ` both work, and `exit` quits the same way. Any
 other city prints `<city> is not added` and then shows the UTC time
 labeled GMT.
 
@@ -41,13 +42,17 @@ labeled GMT.
   civil time during the part of the year when that city is on the other
   side of a daylight saving switch.
 - The printed time is the current time of day only (hour, minute,
-  second, not zero-padded). No date is shown, even when an offset
+  second, zero-padded). No date is shown, even when an offset
   crosses midnight.
 - Times wrap correctly across midnight in both directions, and the
   Kolkata half hour carries into the hour when the minutes pass 59.
 
 ## Files
 
-- `ai_time.py`: the whole program.
+- `ai_time.py`: the whole program. The offset math sits in
+  `time_for_city(city, now_utc)`, separate from the prompt loop, so it
+  can be tested with a fixed time.
+- `test_ai_time.py`: unit and scripted-run tests
+  (`python3 -m unittest`).
 - `logo.png`, `banner.png`: generated branding.
 - `LICENSE`: GNU General Public License v3.
