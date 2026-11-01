@@ -1,163 +1,59 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>GMT World Time Calculator: what it is, how it runs, where it stops</title>
-<meta name="description" content="GMT World Time Calculator is one of my projects. The README in the repo is short, so this page sticks to what the files themselves show.">
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GMT-World-Time-Calculator: Hydrothermal Vent Expedition</title>
 <style>
-:root {
-  --bg: #080c0a; --panel: #0d1410; --ink: #d9e8dd;
-  --mut: #111b15;
-  --acc: #57e389; --acc2: #e8b339;
-  --line: #0d1410;
-}
-* { box-sizing: border-box; }
-body { margin: 0; background: var(--bg); color: var(--ink);
-  font-family: Charter, Georgia, serif; line-height: 1.55; }
-code, pre, .mono { font-family: 'DejaVu Sans Mono', monospace; }
-a { color: var(--acc2); }
-.hero { padding: 3rem 6vw 1rem; }
-.hero img.banner { width: 100%; height: auto; border: 1px solid var(--line);
-  border-radius: 10px; }
-.logo { width: 92px; height: 92px; border-radius: 18px;
-  border: 1px solid var(--line); }
-h1 { font-size: 2.4rem; margin: 0.4em 0 0.1em; }
-h2 { border-bottom: 2px solid var(--acc); padding-bottom: 0.2em;
-  margin-top: 2em; }
-.lede { font-size: 1.15rem; max-width: 62ch; }
-main { padding: 0 6vw 3rem; max-width: 1180px; margin: 0 auto; }
-.grid { display: grid; gap: 1rem;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); }
-.card { background: var(--panel); border: 1px solid var(--line);
-  border-radius: 12px; padding: 1rem 1.2rem; }
-.card.pop { animation: rise 0.7s ease both; }
-@keyframes rise { from { opacity: 0; transform: translateY(14px); }
-  to { opacity: 1; transform: none; } }
-pre.code { background: #101014; color: #e8e6df; padding: 1rem 1.2rem;
-  border-radius: 12px; overflow-x: auto; font-size: 0.86rem;
-  border-left: 5px solid var(--acc); }
-table { border-collapse: collapse; width: 100%; }
-td, th { border-bottom: 1px solid var(--line); padding: 0.45rem 0.6rem;
-  text-align: left; }
-.shots { display: grid; gap: 1rem;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
-.shots img { width: 100%; height: auto; border: 1px solid var(--line);
-  border-radius: 10px; background: #f4f1e8; }
-footer { padding: 2rem 6vw; border-top: 1px solid var(--line);
-  color: var(--mut); }
-.rail { display: flex; gap: 1.2rem; align-items: flex-start; }
-.rail nav { position: sticky; top: 1rem; min-width: 180px; }
-@media (max-width: 760px) { .rail { flex-direction: column; }
-  .rail nav { position: static; } }
-@media (prefers-reduced-motion: reduce) {
-  .card.pop { animation: none; } * { scroll-behavior: auto; } }
-</style>
-</head>
-<body class="layout-split">
-<!-- This page exists for GMT-World-Time-Calculator alone: the layout (split-hero),
-     the colors, and the type were picked for this project, not
-     shared with the other project pages. The code block below is
-     copied from the file it names, line for line. If it looks
-     plain, that is because the project is plain, and I would
-     rather the page match the project than dress it up. The one
-     thing I will not do here is oversell: what this project does
-     not do is stated on the page, not hidden from it. -->
-<header class="hero">
-  <img class="logo" src="assets/logo.png" alt="GMT World Time Calculator logo">
-  <img class="banner" src="assets/banner.png" alt="">
-  <h1>GMT World Time Calculator</h1>
-  <p class="mono"><a href="https://github.com/Epsilon0xCell/GMT-World-Time-Calculator">github.com/Epsilon0xCell/GMT-World-Time-Calculator</a></p>
-</header>
-
+@font-face{font-family:'BlackOps';src:url('fonts/BlackOpsOne-Regular.ttf') format('truetype')}
+@font-face{font-family:'Barlow';src:url('fonts/Barlow-Regular.ttf') format('truetype')}
+@font-face{font-family:'Barlow';src:url('fonts/Barlow-Bold.ttf') format('truetype');font-weight:bold}
+*{box-sizing:border-box}body{margin:0;background:#050607;color:#e8e6dc;font-family:'Barlow',sans-serif;line-height:1.6}
+.ruler{position:fixed;left:0;top:0;bottom:0;width:44px;background:#0a0b0c;border-right:2px solid #d8b52a;color:#d8b52a;font-size:.62rem;padding:1rem .3rem;display:flex;flex-direction:column;justify-content:space-between;text-align:center}
+header,main,footer{margin-left:44px}
+header{padding:2rem 5vw 0}header img.banner{width:100%;border-radius:8px}.logo{width:92px;height:92px}
+h1{font-family:'BlackOps',sans-serif;font-size:1.9rem;color:#e8e6dc;letter-spacing:.02em}
+h2{font-family:'BlackOps',sans-serif;font-size:1.25rem;color:#e8e6dc}
+h2 .tick{color:#d8b52a}
+nav.console{display:flex;gap:.9rem;flex-wrap:wrap;margin:1.1rem 0}
+a.disc{font-family:'BlackOps',sans-serif;text-decoration:none;color:#d8b52a;background:radial-gradient(circle at 50% 62%,#2a2c2e,#0c0d0e 70%);border:3px solid #8a8880;border-radius:50%;width:102px;height:102px;display:flex;align-items:center;justify-content:center;text-align:center;font-size:.78rem;transition:all .25s}
+a.disc:hover{box-shadow:0 0 16px #d8b52a;color:#ffe98a}
+a.disc:active{transform:translateY(3px)}
+a{color:#e8e6dc}a.worm::before{content:'\2766  ';color:#ce2c24}
+main{padding:0 5vw 3rem;max-width:1120px}
+.tray{background:#0c0d0e;border:2px solid #3a3b38;border-radius:8px;padding:1.1rem 1.3rem;margin:1.3rem 0;box-shadow:inset 0 0 0 3px #050607}
+.tray.caution{border-color:#d8b52a}
+table{border-collapse:collapse;width:100%}td,th{border-bottom:1px solid #2c2d2a;padding:.42rem .6rem;text-align:left}
+.time{color:#ce2c24;font-weight:bold;font-variant-numeric:tabular-nums}
+pre.code{background:#000;color:#e8e6dc;padding:1rem 1.2rem;border-radius:8px;overflow-x:auto;font-size:.88rem;border:1px solid #2c2d2a}
+.note{background:#e8e6dc;color:#141312;border-left:8px solid #b08d2a;padding:.8rem 1rem;margin:1rem 0}
+.note b{color:#a02018}
+.shots{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem}.shots img{width:100%;border-radius:6px}
+footer{padding:1.4rem 5vw;color:#8a8880}
+</style></head><body>
+<div class="ruler" aria-hidden="true"><span>0 m</span><span>500 m</span><span>1000 m</span><span>1500 m</span><span>2000 m</span><span>2500 m</span></div>
+<header><img class="logo" src="assets/logo.png" alt="Black smoker logo"><img class="banner" src="assets/banner.png" alt="">
+<h1>GMT-World-Time-Calculator</h1>
+<p><a class="worm" href="https://github.com/Epsilon0xCell/GMT-World-Time-Calculator">github.com/Epsilon0xCell/GMT-World-Time-Calculator</a></p>
+<nav class="console"><a class="disc" href="#run">Run it</a><a class="disc" href="#files">The files</a><a class="disc" href="#sheets">The sheets</a><a class="disc" href="https://github.com/Epsilon0xCell/GMT-World-Time-Calculator">The repo</a></nav>
+<p>Rule-based AI Time Prediction, a small interactive Python program printing the current time in a city you name, computed from UTC with a fixed per-city offset, no machine learning model anywhere in it. ai_time.py's rule table is the whole mechanism.</p></header>
 <main>
-  <section class="rail">
-    <nav aria-label="on this page">
-      <p class="mono"><a href="#run">Run it</a><br>
-      <a href="#files">The files</a><br>
-      <a href="#sheets">The sheets</a><br>
-      <a href="https://github.com/Epsilon0xCell/GMT-World-Time-Calculator">The repo</a></p>
-    </nav>
-    <div>
-      <p class="lede">GMT World Time Calculator is one of my projects. The README in the repo is short, so this page sticks to what the files themselves show.</p>
-      <div class="grid">
-        <div class="card pop"><h3>What it is</h3>
-          <p>GMT World Time Calculator: 3 files, 47 counted
-          lines across Python 45, Markdown 2. One job, done in the
-          open, in files you can read.</p></div>
-        <div class="card pop"><h3>The biggest piece</h3>
-          <p><code>ai_time.py</code> carries the most
-          lines. If the project grows, that file is where the growth
-          lands first, for better or worse.</p></div>
-        <div class="card pop"><h3>The honest gap</h3>
-          <p>No test files yet. That is the honest gap, and the roadmap in the visuals folder says what the first one should cover.</p></div>
-      </div>
-      <section id="run">
-        <h2>Run it</h2>
-        <p>The repo README has the exact commands for this one. The
-        shape is the shape for most of my projects: clone it, read the
-        top file first so you know what will happen, then run it on
-        something you do not mind breaking.</p>
-        <p class="mono">$ git clone https://github.com/Epsilon0xCell/GMT-World-Time-Calculator.git<br>$ cd GMT-World-Time-Calculator</p>
-      </section>
-      
-  <section aria-label="real code">
-    <h2>The code, as it sits in the repo</h2>
-    <p>From <code>ai_time.py</code>, line 1 on. I did
-    not tidy it for the page. What you see is what the file has.</p>
-    <pre class="code"><code>import datetime  
-
-while (True):
-  city = input(&quot;Enter city: &quot;)
-
-  current_time = datetime.datetime.now()
-  hour = current_time.hour
-  minute = current_time.minute
-  second = current_time.second
-  
-  if city == &quot;Boston&quot;:
-    hour = hour - 4 
-
-  elif city == &quot;Tokyo&quot;:
-    hour = hour + 9
-
-  elif city == &quot;Chicago&quot;:
-    hour = hour - 5 
-
-  elif city == &quot;Seattle&quot;:
-    hour = hour - 7</code></pre>
-  </section>
-      <section id="files">
-        <h2>The files that matter</h2>
-        <table><tr><th>File</th><th>Lines</th></tr>
-        <tr><td><code>ai_time.py</code></td><td>45</td></tr>
-        <tr><td><code>README.md</code></td><td>2</td></tr>
-        <tr><td><code>LICENSE</code></td><td>0</td></tr>
-        </table>
-        <p>Names doing the work: <span class="mono">no named functions in the snapshot</span>.</p>
-      </section>
-      <section id="sheets">
-        <h2>Drawn by hand</h2>
-        <p>I sketch my projects on notebook paper so I have to
-        understand them well enough to draw them. The full set,
-        with the counts and how they were counted, is the
-        <a href="https://github.com/Epsilon0xCell/GMT-World-Time-Calculator/tree/main/GMT-World-Time-Calculator-Visuals">GMT-World-Time-Calculator-Visuals</a>
-        folder in the repo. Nothing is drawn over the binder holes.
-        That is a rule, not a style.</p>
-        <div class="shots">
-          <img src="assets/architecture.png" alt="Hand drawn architecture sheet for GMT World Time Calculator">
-          <img src="assets/flowchart.png" alt="Hand drawn flowchart sheet for GMT World Time Calculator">
-          <img src="assets/product-map.png" alt="Hand drawn product map sheet for GMT World Time Calculator">
-        </div>
-      </section>
-    </div>
-  </section>
-</main>
-<footer>
-  <p>GMT World Time Calculator is one of my projects. This page was written
-  from the repo itself on 2026-10-30: the counts are the
-  repo's counts, the code is the repo's code, and the gaps are the
-  repo's gaps.</p>
-</footer>
-</body>
-</html>
+<section class="tray" id="run"><h2><span class="tick">|</span> Station one: Run it</h2>
+<pre class="code"><code>python3 ai_time.py</code></pre>
+<p>Python 3, standard library only. Type a supported city at the Enter city: prompt, or exit to quit. Closing the input also ends the program cleanly.</p></section>
+<section class="tray"><h2><span class="tick">|</span> Station two: The eight stations of the clock</h2>
+<table><tr><th>City</th><th>Offset from UTC</th><th>Time figure style</th></tr>
+<tr><td>BOSTON</td><td>minus 4 hours</td><td class="time">--:--:--</td></tr>
+<tr><td>CHICAGO</td><td>minus 5 hours</td><td class="time">--:--:--</td></tr>
+<tr><td>SEATTLE</td><td>minus 7 hours</td><td class="time">--:--:--</td></tr>
+<tr><td>CAIRO</td><td>plus 2 hours</td><td class="time">--:--:--</td></tr>
+<tr><td>KARACHI</td><td>plus 5 hours</td><td class="time">--:--:--</td></tr>
+<tr><td>KOLKATA</td><td>plus 5 hours 30 minutes</td><td class="time">--:--:--</td></tr>
+<tr><td>SHANGHAI</td><td>plus 8 hours</td><td class="time">--:--:--</td></tr>
+<tr><td>TOKYO</td><td>plus 9 hours</td><td class="time">--:--:--</td></tr></table>
+<p>Names match without regard to case or surrounding spaces, so tokyo and a padded Tokyo both work, and exit quits the same forgiving way. Any other city prints that city is not added, in the form &lt;city&gt; is not added, then shows the UTC time labelled GMT. The current program uses the CITY_OFFSETS table and UTC arithmetic.</p></section>
+<section class="tray caution" id="files"><h2><span class="tick">|</span> Station three: Honest limits</h2>
+<div class="note"><b>Dive log note:</b> offsets are fixed constants; they do not adjust for daylight saving, so a listed offset can differ from civil time when a city crosses a saving switch.</div>
+<div class="note"><b>Dive log note:</b> output is time of day only, hour, minute, second, zero padded, with no date shown even when an offset crosses midnight.</div>
+<p>Times wrap correctly across midnight in both directions and the Kolkata half hour carries into the hour past 59 minutes. File list: ai_time.py, with time_for_city(city, now_utc) separated from the prompt loop for testing, test_ai_time.py run with python3 -m unittest, logo.png and banner.png, LICENSE under GPL-3.0.</p></section>
+<section id="sheets"><h2><span class="tick">|</span> The sheets</h2>
+<p>The full set is the <a class="worm" href="https://github.com/Epsilon0xCell/GMT-World-Time-Calculator/tree/main/GMT-World-Time-Calculator-Visuals">GMT-World-Time-Calculator-Visuals</a> folder in the repo.</p>
+<div class="shots"><img src="assets/architecture.png" alt="Hand drawn architecture sheet"><img src="assets/flowchart.png" alt="Hand drawn flowchart sheet"><img src="assets/product-map.png" alt="Hand drawn product map sheet"></div></section>
+</main><footer>GMT-World-Time-Calculator is one of my projects. The offset table and limits on this page follow the current ai_time.py and its README.</footer></body></html>
