@@ -1,10 +1,12 @@
-![Intro banner](intro-banner.png)
+![Intro: a closer view of the brass world time instrument, one small satellite dial being nudged two hours forward by a brass key while its neighbours hold their hours, ivory faces and aged brass in warm light over oxblood leather](intro-banner.png)
 
-![GMT World Time Calculator banner](banner.png)
+![GMT World Time Calculator banner: a brass world time instrument on a leather topped bench, one large central dial and a ring of smaller city dials each stopped at a different hour, gears and offset levers visible between them, ivory faces, soot black shadows](banner.png)
 
 ![Animated scene](scene.svg)
 
 # GMT-World-Time-Calculator
+
+<p align="center"><img src="logo.png" alt="GMT-World-Time-Calculator logo: a round brass orrery style clock with one ivory face and eight small satellite dials orbiting it on brass arms, soot black background, oxblood leather strap beneath" width="200"></p>
 
 Rule-based AI Time Prediction: a small interactive Python program that
 prints the current time in a city you name, computed from UTC with a
